@@ -1,11 +1,271 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Moja strona</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EbikeDoctor</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.sidebar img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.sidebar button, .sidebar .lang-btn {
+  background: #34495e;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+.sidebar button.active, .sidebar .lang-btn.active {
+  background: #1abc9c;
+}
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+h1,h2,h3 {
+  color: #2c3e50;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+table, th, td {
+  border: 1px solid #ddd;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  margin: 5px;
+}
+</style>
 </head>
 <body>
-    <h1>Witaj na mojej stronie!</h1>
-    <p>To jest moja pierwsza strona na GitHub Pages 🎉</p>
+
+<div class="sidebar">
+  <img src="fvVz8q3UJzq7dBbJgMfxV.jpeg" alt="EbikeDoctor Logo">
+
+  <button class="tab-btn active" data-tab="dane">Dane firmy</button>
+  <button class="tab-btn" data-tab="cenniki">Cenniki</button>
+  <button class="tab-btn" data-tab="galeria">Galeria</button>
+
+  <div style="margin-top:20px;">
+    <button id="plLang" class="lang-btn active">PL</button>
+    <button id="nlLang" class="lang-btn">NL</button>
+  </div>
+</div>
+
+<div class="main">
+  <!-- Dane firmy -->
+  <section id="dane" class="tab-content active">
+    <article class="lang pl">
+      <h1>EbikeDoctor</h1>
+      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów. Dzięki doświadczeniu i pasji do dwóch kółek gwarantuję dokładną diagnostykę, solidną naprawę oraz indywidualne podejście do każdego klienta.</p>
+      <h2>Nasze usługi:</h2>
+      <ul>
+        <li>Serwis e-bike: silniki, baterie i elektronika</li>
+        <li>Pełne przeglądy techniczne</li>
+        <li>Naprawa hamulców i przerzutek</li>
+        <li>Regeneracja i wymiana baterii</li>
+        <li>Wymiana części i akcesoriów</li>
+        <li>Przygotowanie roweru do sezonu</li>
+        <li>Przeróbka rowerów tradycyjnych na elektryczne (górskie, cargo)</li>
+        <li>Budowa baterii na wymiar</li>
+      </ul>
+      <p><strong>Szybko • Fachowo • Uczciwie</strong></p>
+      <p>Twój rower zasługuje na dobrego doktora! 🩺🚲</p>
+      <p>Zadzwoń i umów wizytę: 📞 0619410801</p>
+      <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
+    </article>
+
+    <article class="lang nl" style="display:none;">
+      <h1>EbikeDoctor</h1>
+      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes. Dankzij onze ervaring en passie voor fietsen garanderen wij nauwkeurige diagnose, degelijke reparatie en individuele aanpak voor elke klant.</p>
+      <h2>Onze diensten:</h2>
+      <ul>
+        <li>E-bike service: motoren, batterijen en elektronica</li>
+        <li>Volledige technische controles</li>
+        <li>Remmen en versnellingen repareren</li>
+        <li>Batterij regeneratie en vervanging</li>
+        <li>Vervanging van onderdelen en accessoires</li>
+        <li>Fiets klaar maken voor het seizoen</li>
+        <li>Ombouw van conventionele fietsen naar elektrisch (mountainbike, cargo)</li>
+        <li>Maatwerk accu’s</li>
+      </ul>
+      <p><strong>Snel • Vakbekwaam • Eerlijk</strong></p>
+      <p>Uw fiets verdient een goede dokter! 🩺🚲</p>
+      <p>Bel en maak een afspraak: 📞 0619410801</p>
+      <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
+    </article>
+  </section>
+
+  <!-- Cenniki -->
+  <section id="cenniki" class="tab-content">
+    <article class="lang pl">
+      <h2>Cennik Fatbike</h2>
+      <table>
+        <tr><th>Opis</th><th>Cena</th></tr>
+        <tr><td>Wymiana dętki (przód/tył)</td><td>€ 35</td></tr>
+        <tr><td>Wymiana opony (przód/tył)</td><td>€ 55</td></tr>
+        <tr><td>Wymiana dętki i opony</td><td>€ 65</td></tr>
+        <tr><td>Wymiana klocków hamulcowych</td><td>€ 25</td></tr>
+        <tr><td>Zestaw hamulcowy wraz z klockami</td><td>€ 65</td></tr>
+        <tr><td>Wymiana tarczy hamulcowej</td><td>€ 25</td></tr>
+        <tr><td>Wymiana oleju hamulcowego</td><td>€ 20</td></tr>
+        <tr><td>Wymiana zębatek silnika</td><td>€ 90</td></tr>
+        <tr><td>Przegląd / serwis</td><td>€ 40</td></tr>
+        <tr><td>Wymiana łańcucha</td><td>€ 30</td></tr>
+        <tr><td>Wymiana kontrolera silnika</td><td>€ 110</td></tr>
+        <tr><td>Regeneracja akumulatora (LG, Samsung)</td><td>€ 260</td></tr>
+      </table>
+
+      <h2>Cennik Rowerów Elektrycznych</h2>
+      <table>
+        <tr><th>Opis</th><th>Cena</th></tr>
+        <tr><td>Przegląd / serwis</td><td>€ 40</td></tr>
+        <tr><td>Wymiana klocków hamulcowych</td><td>€ 25</td></tr>
+        <tr><td>Wymiana tarczy hamulcowej</td><td>€ 25</td></tr>
+        <tr><td>Zestaw hamulcowy wraz z klockami</td><td>€ 70</td></tr>
+        <tr><td>Wymiana oleju hamulcowego</td><td>€ 20</td></tr>
+        <tr><td>Wymiana dętki</td><td>€ 30</td></tr>
+        <tr><td>Wymiana opony</td><td>od € 40</td></tr>
+        <tr><td>Diagnostyka usterki elektrycznej</td><td>€ 30</td></tr>
+        <tr><td>Wymiana łańcucha</td><td>od € 30</td></tr>
+        <tr><td>Regeneracja akumulatora</td><td>od € 199</td></tr>
+      </table>
+    </article>
+
+    <article class="lang nl" style="display:none;">
+      <h2>Fatbike Prijzen</h2>
+      <table>
+        <tr><th>Omschrijving</th><th>Prijs</th></tr>
+        <tr><td>Binnen-/buitenband vervangen</td><td>€ 35</td></tr>
+        <tr><td>Banden vervangen</td><td>€ 55</td></tr>
+        <tr><td>Band en binnenband vervangen</td><td>€ 65</td></tr>
+        <tr><td>Remblok vervangen</td><td>€ 25</td></tr>
+        <tr><td>Remset incl. blokken</td><td>€ 65</td></tr>
+        <tr><td>Remschijf vervangen</td><td>€ 25</td></tr>
+        <tr><td>Remolie vervangen</td><td>€ 20</td></tr>
+        <tr><td>Motor tandwielen vervangen</td><td>€ 90</td></tr>
+        <tr><td>Controle / service</td><td>€ 40</td></tr>
+        <tr><td>Ketting vervangen</td><td>€ 30</td></tr>
+        <tr><td>Motorcontroller vervangen</td><td>€ 110</td></tr>
+        <tr><td>Accu regeneratie (LG, Samsung)</td><td>€ 260</td></tr>
+      </table>
+
+      <h2>Elektrische Fietsen Prijzen</h2>
+      <table>
+        <tr><th>Omschrijving</th><th>Prijs</th></tr>
+        <tr><td>Controle / service</td><td>€ 40</td></tr>
+        <tr><td>Remblok vervangen</td><td>€ 25</td></tr>
+        <tr><td>Remschijf vervangen</td><td>€ 25</td></tr>
+        <tr><td>Remset incl. blokken</td><td>€ 70</td></tr>
+        <tr><td>Remolie vervangen</td><td>€ 20</td></tr>
+        <tr><td>Binnenband vervangen</td><td>€ 30</td></tr>
+        <tr><td>Band vervangen</td><td>vanaf € 40</td></tr>
+        <tr><td>Elektrische storing diagnosticeren</td><td>€ 30</td></tr>
+        <tr><td>Ketting vervangen</td><td>vanaf € 30</td></tr>
+        <tr><td>Accu regeneratie</td><td>vanaf € 199</td></tr>
+      </table>
+    </article>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria" class="tab-content">
+    <article class="lang pl">
+      <h2>Galeria</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1">
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3">
+      </div>
+    </article>
+
+    <article class="lang nl" style="display:none;">
+      <h2>Galerij</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1">
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3">
+      </div>
+    </article>
+  </section>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const plLangBtn = document.getElementById('plLang');
+  const nlLangBtn = document.getElementById('nlLang');
+  const langsPL = document.querySelectorAll('.lang.pl');
+  const langsNL = document.querySelectorAll('.lang.nl');
+
+  // Zakładki
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Przełączanie języka
+  function setLang(lang) {
+    if(lang === 'pl') {
+      plLangBtn.classList.add('active');
+      nlLangBtn.classList.remove('active');
+      langsPL.forEach(el => el.style.display = '');
+      langsNL.forEach(el => el.style.display = 'none');
+    } else {
+      nlLangBtn.classList.add('active');
+      plLangBtn.classList.remove('active');
+      langsPL.forEach(el => el.style.display = 'none');
+      langsNL.forEach(el => el.style.display = '');
+    }
+  }
+
+  plLangBtn.addEventListener('click', () => setLang('pl'));
+  nlLangBtn.addEventListener('click', () => setLang('nl'));
+
+  setLang('pl'); // Domyślny język
+});
+</script>
+
 </body>
 </html>
