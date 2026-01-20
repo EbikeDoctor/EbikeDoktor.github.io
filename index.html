@@ -31,11 +31,11 @@ body {
   background: #34495e;
   border: none;
   color: white;
-  padding: 8px;
-  margin: 3px 0;
+  padding: 6px;
+  margin: 2px 0;
   cursor: pointer;
   text-align: left;
-  font-size: 14px;
+  font-size: 13px;
   width: 100%;
 }
 
@@ -95,12 +95,17 @@ th, td {
     flex-direction: row;
   }
   .sidebar {
-    width: 120px;
+    width: 90px; /* bardzo wąski sidebar */
     padding: 5px;
   }
+  .sidebar img {
+    max-width: 80px;
+    margin-bottom: 10px;
+  }
   .sidebar button, .sidebar .lang-btn {
-    padding: 5px;
-    font-size: 12px;
+    padding: 4px;
+    font-size: 11px;
+    margin: 1px 0;
   }
   .main {
     flex: 1;
@@ -119,11 +124,11 @@ th, td {
 <div class="sidebar">
   <img src="fvVz8q3UJzq7dBbJgMfxV.jpeg" alt="EbikeDoctor Logo">
 
-  <button class="tab-btn active" data-tab="dane" data-pl="Dane firmy" data-nl="Bedrijfsgegevens">Dane firmy</button>
-  <button class="tab-btn" data-tab="cenniki" data-pl="Cenniki" data-nl="Prijzen">Cenniki</button>
+  <button class="tab-btn active" data-tab="dane" data-pl="Dane" data-nl="Bedrijfsgegevens">Dane</button>
+  <button class="tab-btn" data-tab="cenniki" data-pl="Cennik" data-nl="Prijzen">Cennik</button>
   <button class="tab-btn" data-tab="galeria" data-pl="Galeria" data-nl="Galerij">Galeria</button>
 
-  <div style="margin-top:20px;">
+  <div style="margin-top:10px;">
     <button id="plLang" class="lang-btn active">PL</button>
     <button id="nlLang" class="lang-btn">NL</button>
   </div>
@@ -311,5 +316,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-
-
