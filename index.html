@@ -11,6 +11,8 @@ body {
   display: flex;
   min-height: 100vh;
 }
+
+/* Sidebar - zakładki po lewej */
 .sidebar {
   width: 200px;
   background: #2c3e50;
@@ -19,54 +21,67 @@ body {
   flex-direction: column;
   padding: 10px;
 }
+
 .sidebar img {
   max-width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
+
 .sidebar button, .sidebar .lang-btn {
   background: #34495e;
   border: none;
   color: white;
-  padding: 6px;
+  padding: 8px;
   margin: 3px 0;
   cursor: pointer;
   text-align: left;
-  width: 100%;
   font-size: 14px;
+  width: 100%;
 }
+
 .sidebar button.active, .sidebar .lang-btn.active {
   background: #1abc9c;
 }
+
+/* Main content */
 .main {
   flex: 1;
-  padding: 15px;
+  padding: 20px;
   overflow-y: auto;
 }
+
 .tab-content {
   display: none;
 }
+
 .tab-content.active {
   display: block;
 }
+
 h1,h2,h3 {
   color: #2c3e50;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
+
 table, th, td {
   border: 1px solid #ddd;
 }
+
 th, td {
-  padding: 6px;
+  padding: 8px;
   text-align: left;
 }
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
 }
+
 .gallery img {
   width: 200px;
   height: 150px;
@@ -74,23 +89,23 @@ th, td {
   margin: 5px;
 }
 
-/* Responsywność */
+/* Poprawa wyglądu na telefonach */
 @media (max-width: 768px) {
   body {
-    flex-direction: column;
+    flex-direction: row;
   }
   .sidebar {
-    width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
+    width: 120px;
+    padding: 5px;
   }
   .sidebar button, .sidebar .lang-btn {
-    flex: 1 0 auto;
-    margin: 0 3px;
-    white-space: nowrap;
+    padding: 5px;
+    font-size: 12px;
   }
   .main {
+    flex: 1;
     padding: 10px;
+    overflow-y: auto;
   }
   .gallery img {
     width: 100%;
@@ -102,14 +117,13 @@ th, td {
 <body>
 
 <div class="sidebar">
-  <!-- Wgraj swoje logo do repozytorium i podaj poprawną nazwę pliku -->
   <img src="fvVz8q3UJzq7dBbJgMfxV.jpeg" alt="EbikeDoctor Logo">
 
-  <button class="tab-btn active" data-tab="dane">Dane firmy</button>
-  <button class="tab-btn" data-tab="cenniki">Cenniki</button>
-  <button class="tab-btn" data-tab="galeria">Galeria</button>
+  <button class="tab-btn active" data-tab="dane" data-pl="Dane firmy" data-nl="Bedrijfsgegevens">Dane firmy</button>
+  <button class="tab-btn" data-tab="cenniki" data-pl="Cenniki" data-nl="Prijzen">Cenniki</button>
+  <button class="tab-btn" data-tab="galeria" data-pl="Galeria" data-nl="Galerij">Galeria</button>
 
-  <div style="margin-top:10px;">
+  <div style="margin-top:20px;">
     <button id="plLang" class="lang-btn active">PL</button>
     <button id="nlLang" class="lang-btn">NL</button>
   </div>
@@ -120,7 +134,7 @@ th, td {
   <section id="dane" class="tab-content active">
     <article class="lang pl">
       <h1>EbikeDoctor</h1>
-      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów...</p>
+      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów. Dzięki doświadczeniu i pasji do dwóch kółek gwarantuję dokładną diagnostykę, solidną naprawę oraz indywidualne podejście do każdego klienta.</p>
       <h2>Nasze usługi:</h2>
       <ul>
         <li>Serwis e-bike: silniki, baterie i elektronika</li>
@@ -133,13 +147,14 @@ th, td {
         <li>Budowa baterii na wymiar</li>
       </ul>
       <p><strong>Szybko • Fachowo • Uczciwie</strong></p>
-      <p>Zadzwoń: 0619410801</p>
+      <p>Twój rower zasługuje na dobrego doktora! 🩺🚲</p>
+      <p>Zadzwoń i umów wizytę: 📞 0619410801</p>
       <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
 
     <article class="lang nl" style="display:none;">
       <h1>EbikeDoctor</h1>
-      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes...</p>
+      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes. Dankzij onze ervaring en passie voor fietsen garanderen wij nauwkeurige diagnose, degelijke reparatie en individuele aanpak voor elke klant.</p>
       <h2>Onze diensten:</h2>
       <ul>
         <li>E-bike service: motoren, batterijen en elektronica</li>
@@ -152,7 +167,8 @@ th, td {
         <li>Maatwerk accu’s</li>
       </ul>
       <p><strong>Snel • Vakbekwaam • Eerlijk</strong></p>
-      <p>Bel: 0619410801</p>
+      <p>Uw fiets verdient een goede dokter! 🩺🚲</p>
+      <p>Bel en maak een afspraak: 📞 0619410801</p>
       <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
   </section>
@@ -276,17 +292,13 @@ document.addEventListener("DOMContentLoaded", function() {
       nlLangBtn.classList.remove('active');
       langsPL.forEach(el => el.style.display = '');
       langsNL.forEach(el => el.style.display = 'none');
-      tabButtons[0].textContent = 'Dane firmy';
-      tabButtons[1].textContent = 'Cenniki';
-      tabButtons[2].textContent = 'Galeria';
+      tabButtons.forEach(btn => btn.textContent = btn.dataset.pl);
     } else {
       nlLangBtn.classList.add('active');
       plLangBtn.classList.remove('active');
       langsPL.forEach(el => el.style.display = 'none');
       langsNL.forEach(el => el.style.display = '');
-      tabButtons[0].textContent = 'Bedrijfsgegevens';
-      tabButtons[1].textContent = 'Prijzen';
-      tabButtons[2].textContent = 'Galerij';
+      tabButtons.forEach(btn => btn.textContent = btn.dataset.nl);
     }
   }
 
@@ -299,4 +311,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
