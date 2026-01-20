@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
 }
 .sidebar {
-  width: 160px;
+  width: 200px;
   background: #2c3e50;
   color: white;
   display: flex;
@@ -27,22 +27,15 @@ body {
   background: #34495e;
   border: none;
   color: white;
-  padding: 5px;
+  padding: 6px;
   margin: 3px 0;
   cursor: pointer;
   text-align: left;
-  font-size: 12px;
   width: 100%;
-  transition: all 0.2s ease;
-}
-.sidebar button:hover, .sidebar .lang-btn:hover {
-  background: #3d566e;
-  transform: scale(1.05);
+  font-size: 14px;
 }
 .sidebar button.active, .sidebar .lang-btn.active {
   background: #1abc9c;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 .main {
   flex: 1;
@@ -67,7 +60,7 @@ table, th, td {
   border: 1px solid #ddd;
 }
 th, td {
-  padding: 8px;
+  padding: 6px;
   text-align: left;
 }
 .gallery {
@@ -80,15 +73,24 @@ th, td {
   object-fit: cover;
   margin: 5px;
 }
+
+/* Responsywność */
 @media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
   .sidebar {
-    width: 100px;
-    padding: 5px;
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
   }
   .sidebar button, .sidebar .lang-btn {
-    font-size: 10px;
-    padding: 4px;
-    margin: 2px 0;
+    flex: 1 0 auto;
+    margin: 0 3px;
+    white-space: nowrap;
+  }
+  .main {
+    padding: 10px;
   }
   .gallery img {
     width: 100%;
@@ -100,6 +102,7 @@ th, td {
 <body>
 
 <div class="sidebar">
+  <!-- Wgraj swoje logo do repozytorium i podaj poprawną nazwę pliku -->
   <img src="fvVz8q3UJzq7dBbJgMfxV.jpeg" alt="EbikeDoctor Logo">
 
   <button class="tab-btn active" data-tab="dane">Dane firmy</button>
@@ -117,7 +120,7 @@ th, td {
   <section id="dane" class="tab-content active">
     <article class="lang pl">
       <h1>EbikeDoctor</h1>
-      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów. Dzięki doświadczeniu i pasji do dwóch kółek gwarantuję dokładną diagnostykę, solidną naprawę oraz indywidualne podejście do każdego klienta.</p>
+      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów...</p>
       <h2>Nasze usługi:</h2>
       <ul>
         <li>Serwis e-bike: silniki, baterie i elektronika</li>
@@ -130,14 +133,13 @@ th, td {
         <li>Budowa baterii na wymiar</li>
       </ul>
       <p><strong>Szybko • Fachowo • Uczciwie</strong></p>
-      <p>Twój rower zasługuje na dobrego doktora! 🩺🚲</p>
-      <p>Zadzwoń i umów wizytę: 📞 0619410801</p>
+      <p>Zadzwoń: 0619410801</p>
       <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
 
     <article class="lang nl" style="display:none;">
       <h1>EbikeDoctor</h1>
-      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes. Dankzij onze ervaring en passie voor fietsen garanderen wij nauwkeurige diagnose, degelijke reparatie en individuele aanpak voor elke klant.</p>
+      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes...</p>
       <h2>Onze diensten:</h2>
       <ul>
         <li>E-bike service: motoren, batterijen en elektronica</li>
@@ -150,8 +152,7 @@ th, td {
         <li>Maatwerk accu’s</li>
       </ul>
       <p><strong>Snel • Vakbekwaam • Eerlijk</strong></p>
-      <p>Uw fiets verdient een goede dokter! 🩺🚲</p>
-      <p>Bel en maak een afspraak: 📞 0619410801</p>
+      <p>Bel: 0619410801</p>
       <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
   </section>
@@ -234,13 +235,16 @@ th, td {
       <div class="gallery">
         <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1">
         <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3">
       </div>
     </article>
+
     <article class="lang nl" style="display:none;">
       <h2>Galerij</h2>
       <div class="gallery">
         <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1">
         <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3">
       </div>
     </article>
   </section>
@@ -255,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const langsPL = document.querySelectorAll('.lang.pl');
   const langsNL = document.querySelectorAll('.lang.nl');
 
+  // Zakładki
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
@@ -264,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // Przełączanie języka
   function setLang(lang) {
     if(lang === 'pl') {
       plLangBtn.classList.add('active');
@@ -277,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
       nlLangBtn.classList.add('active');
       plLangBtn.classList.remove('active');
       langsPL.forEach(el => el.style.display = 'none');
-      langsNL.forEach(el => el.style.display = '';
+      langsNL.forEach(el => el.style.display = '');
       tabButtons[0].textContent = 'Bedrijfsgegevens';
       tabButtons[1].textContent = 'Prijzen';
       tabButtons[2].textContent = 'Galerij';
@@ -287,9 +293,10 @@ document.addEventListener("DOMContentLoaded", function() {
   plLangBtn.addEventListener('click', () => setLang('pl'));
   nlLangBtn.addEventListener('click', () => setLang('nl'));
 
-  setLang('pl');
+  setLang('pl'); // Domyślny język
 });
 </script>
 
 </body>
 </html>
+
