@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EbikeDoctor</title>
 <style>
-/* --- Ogólne --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -13,28 +12,27 @@ body {
   min-height: 100vh;
 }
 .sidebar {
-  width: 250px;
+  width: 200px;
   background: #2c3e50;
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  transition: transform 0.3s ease;
+  padding: 15px;
 }
 .sidebar img {
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .sidebar button, .sidebar .lang-btn {
   background: #34495e;
   border: none;
   color: white;
-  padding: 8px;
+  padding: 5px;
   margin: 3px 0;
   cursor: pointer;
   text-align: left;
+  font-size: 12px;
   width: 100%;
-  font-size: 14px;
 }
 .sidebar button.active, .sidebar .lang-btn.active {
   background: #1abc9c;
@@ -76,71 +74,27 @@ th, td {
   margin: 5px;
 }
 
-/* --- Responsywność / Mobile Hamburger Menu --- */
-#hamburger {
-  display: none;
-  font-size: 24px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
+/* Poprawa wyglądu na telefonach */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
-
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 200px;
-    transform: translateX(-220px); /* ukryte */
-    z-index: 1000;
-    padding: 20px 10px;
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
   }
-
-  .sidebar img {
-    margin-bottom: 10px;
-  }
-
   .sidebar button, .sidebar .lang-btn {
-    font-size: 12px;
-    padding: 6px;
-    margin: 4px 0;
+    flex: 1 0 auto;
+    margin: 0 5px;
+    font-size: 10px;
+    padding: 4px;
+    white-space: nowrap;
   }
-
-  #hamburger {
-    display: block;
-  }
-
   .main {
     padding: 10px;
-    margin-top: 50px;
   }
-
-  .sidebar.show {
-    transform: translateX(0);
-  }
-
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 500;
-  }
-
-  .overlay.show {
-    display: block;
-  }
-
   .gallery img {
     width: 100%;
     height: auto;
@@ -150,135 +104,61 @@ th, td {
 </head>
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
+<div class="sidebar">
+  <!-- Logo -->
   <img src="fvVz8q3UJzq7dBbJgMfxV.jpeg" alt="EbikeDoctor Logo">
+
+  <!-- Zakładki -->
   <button class="tab-btn active" data-tab="dane">Dane firmy</button>
   <button class="tab-btn" data-tab="cenniki">Cenniki</button>
   <button class="tab-btn" data-tab="galeria">Galeria</button>
 
-  <div style="margin-top:20px;">
+  <!-- Wybór języka -->
+  <div style="margin-top:10px;">
     <button id="plLang" class="lang-btn active">PL</button>
     <button id="nlLang" class="lang-btn">NL</button>
   </div>
 </div>
 
-<!-- Hamburger -->
-<button id="hamburger">&#9776;</button>
-<div class="overlay" id="overlay"></div>
-
-<!-- Main content -->
 <div class="main">
   <!-- Dane firmy -->
   <section id="dane" class="tab-content active">
     <article class="lang pl">
       <h1>EbikeDoctor</h1>
-      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów...</p>
+      <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów. Dzięki doświadczeniu i pasji do dwóch kółek gwarantuję dokładną diagnostykę, solidną naprawę oraz indywidualne podejście do każdego klienta.</p>
+      <h2>Nasze usługi:</h2>
+      <ul>
+        <li>Serwis e-bike: silniki, baterie i elektronika</li>
+        <li>Pełne przeglądy techniczne</li>
+        <li>Naprawa hamulców i przerzutek</li>
+        <li>Regeneracja i wymiana baterii</li>
+        <li>Wymiana części i akcesoriów</li>
+        <li>Przygotowanie roweru do sezonu</li>
+        <li>Przeróbka rowerów tradycyjnych na elektryczne (górskie, cargo)</li>
+        <li>Budowa baterii na wymiar</li>
+      </ul>
+      <p><strong>Szybko • Fachowo • Uczciwie</strong></p>
+      <p>Twój rower zasługuje na dobrego doktora! 🩺🚲</p>
+      <p>Zadzwoń i umów wizytę: 📞 0619410801</p>
+      <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
+
     <article class="lang nl" style="display:none;">
       <h1>EbikeDoctor</h1>
-      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes...</p>
+      <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes. Dankzij onze ervaring en passie voor fietsen garanderen wij nauwkeurige diagnose, degelijke reparatie en individuele aanpak voor elke klant.</p>
+      <h2>Onze diensten:</h2>
+      <ul>
+        <li>E-bike service: motoren, batterijen en elektronica</li>
+        <li>Volledige technische controles</li>
+        <li>Remmen en versnellingen repareren</li>
+        <li>Batterij regeneratie en vervanging</li>
+        <li>Vervanging van onderdelen en accessoires</li>
+        <li>Fiets klaar maken voor het seizoen</li>
+        <li>Ombouw van conventionele fietsen naar elektrisch (mountainbike, cargo)</li>
+        <li>Maatwerk accu’s</li>
+      </ul>
+      <p><strong>Snel • Vakbekwaam • Eerlijk</strong></p>
+      <p>Uw fiets verdient een goede dokter! 🩺🚲</p>
+      <p>Bel en maak een afspraak: 📞 0619410801</p>
+      <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
-  </section>
-
-  <!-- Cenniki -->
-  <section id="cenniki" class="tab-content">
-    <article class="lang pl">
-      <h2>Cennik Fatbike</h2>
-      <!-- tabele pozostają -->
-    </article>
-    <article class="lang nl" style="display:none;">
-      <h2>Fatbike Prijzen</h2>
-      <!-- tabele pozostają -->
-    </article>
-  </section>
-
-  <!-- Galeria -->
-  <section id="galeria" class="tab-content">
-    <article class="lang pl">
-      <h2>Galeria</h2>
-      <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1">
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2">
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3">
-      </div>
-    </article>
-    <article class="lang nl" style="display:none;">
-      <h2>Galerij</h2>
-      <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1">
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2">
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3">
-      </div>
-    </article>
-  </section>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-  const plLangBtn = document.getElementById('plLang');
-  const nlLangBtn = document.getElementById('nlLang');
-  const langsPL = document.querySelectorAll('.lang.pl');
-  const langsNL = document.querySelectorAll('.lang.nl');
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-
-  // Zakładki i nazwy
-  const tabNames = { pl: ["Dane firmy","Cenniki","Galeria"], nl: ["Bedrijfsgegevens","Prijzen","Galerij"] };
-
-  // Zakładki klik
-  tabButtons.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-      tabButtons.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(tc => tc.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-
-      // Zamykamy menu na telefonie
-      if(window.innerWidth <= 768){
-        sidebar.classList.remove('show');
-        overlay.classList.remove('show');
-      }
-    });
-  });
-
-  // Wybór języka
-  function setLang(lang) {
-    if(lang === 'pl') {
-      plLangBtn.classList.add('active');
-      nlLangBtn.classList.remove('active');
-      langsPL.forEach(el => el.style.display = '');
-      langsNL.forEach(el => el.style.display = 'none');
-    } else {
-      nlLangBtn.classList.add('active');
-      plLangBtn.classList.remove('active');
-      langsPL.forEach(el => el.style.display = 'none');
-      langsNL.forEach(el => el.style.display = '');
-    }
-    // Zmiana nazw zakładek
-    tabButtons.forEach((btn, i) => {
-      btn.textContent = tabNames[lang][i];
-    });
-  }
-
-  plLangBtn.addEventListener('click', () => setLang('pl'));
-  nlLangBtn.addEventListener('click', () => setLang('nl'));
-  setLang('pl');
-
-  // Hamburger menu
-  hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('show');
-    overlay.classList.toggle('show');
-  });
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    overlay.classList.remove('show');
-  });
-});
-</script>
-</body>
-</html>
-
