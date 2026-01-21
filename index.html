@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>EbikeDoctor</title>
 <style>
 body {
@@ -10,14 +10,14 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background-color: #e6f7f8;
-  color: #093f4f;
+  background-color: #e6f7f8; /* jasne tło dopasowane do loga */
+  color: #093f4f; /* ciemny morski do tekstu */
 }
 
 /* Sidebar - zakładki po lewej */
 .sidebar {
   width: 240px;
-  background: #000000; /* czarne tło */
+  background: linear-gradient(180deg, #0c1126 0%, #12223d 100%); /* gradient dopasowany do boków logo */
   color: white;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@ body {
 
 .sidebar img {
   max-width: 100%;
-  max-height: 150px;
+  max-height: 150px; /* powiększone logo */
   margin-bottom: 25px;
   object-fit: contain;
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .sidebar button.active, .sidebar .lang-btn.active {
-  background: rgba(255,255,255,0.25);
+  background: #097a8a; /* jaśniejszy odcień loga na aktywne przyciski */
   font-weight: bold;
 }
 
@@ -60,11 +60,11 @@ body {
   flex: 1;
   padding: 30px 35px;
   overflow-y: auto;
-  background-color: #f0fcfd;
+  background-color: #f0fcfd; /* bardzo jasne tło */
 }
 
 h1,h2,h3 {
-  color: #0a5f70;
+  color: #0a5f70; /* nagłówki w kolorze logo */
 }
 
 table {
@@ -74,7 +74,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #97d0d9;
+  border: 1px solid #97d0d9; /* delikatny turkus do tabeli */
 }
 
 th, td {
@@ -100,12 +100,12 @@ th, td {
     flex-direction: row;
   }
   .sidebar {
-    width: 90px;
+    width: 90px; /* bardzo wąski sidebar */
     padding: 5px;
   }
   .sidebar img {
     max-width: 100px;
-    max-height: 100px;
+    max-height: 100px; /* powiększone na telefonie */
     margin-bottom: 10px;
   }
   .sidebar button, .sidebar .lang-btn {
@@ -122,15 +122,6 @@ th, td {
     width: 100%;
     height: auto;
   }
-}
-
-/* Zakładki */
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
 }
 </style>
 </head>
@@ -331,6 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
