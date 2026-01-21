@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>EbikeDoctor</title>
 <style>
 body {
@@ -17,7 +17,7 @@ body {
 /* Sidebar - zakładki po lewej */
 .sidebar {
   width: 240px;
-  background: linear-gradient(180deg, #0c1126 0%, #12223d 100%); /* gradient dopasowany do boków logo */
+  background: #071824; /* ciemny kolor dopasowany do loga */
   color: white;
   display: flex;
   flex-direction: column;
@@ -128,7 +128,7 @@ th, td {
 <body>
 
 <div class="sidebar">
-  <img src="logo.png.jpg" alt="EbikeDoctor Logo">
+  <img src="logo.png.jpg" alt="EbikeDoctor Logo" />
 
   <button class="tab-btn active" data-tab="dane" data-pl="Dane" data-nl="Bedrijfsgegevens">Dane</button>
   <button class="tab-btn" data-tab="cenniki" data-pl="Cennik" data-nl="Prijzen">Cennik</button>
@@ -186,7 +186,7 @@ th, td {
 
   <!-- Cenniki -->
   <section id="cenniki" class="tab-content">
-    <article class="lang pl">
+    <article class="lang pl" style="display:none;">
       <h2>Cennik Fatbike</h2>
       <table>
         <tr><th>Opis</th><th>Cena</th></tr>
@@ -257,21 +257,21 @@ th, td {
 
   <!-- Galeria -->
   <section id="galeria" class="tab-content">
-    <article class="lang pl">
+    <article class="lang pl" style="display:none;">
       <h2>Galeria</h2>
       <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1">
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2">
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1" />
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2" />
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3" />
       </div>
     </article>
 
     <article class="lang nl" style="display:none;">
       <h2>Galerij</h2>
       <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1">
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2">
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1" />
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2" />
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3" />
       </div>
     </article>
   </section>
@@ -286,42 +286,65 @@ document.addEventListener("DOMContentLoaded", function() {
   const langsPL = document.querySelectorAll('.lang.pl');
   const langsNL = document.querySelectorAll('.lang.nl');
 
+  let currentLang = 'pl'; // zapamiętujemy aktualny język
+
+  // Funkcja do pokazania właściwego artykułu po zmianie zakładki
+  function showLangArticles(tabId, lang) {
+    // najpierw ukryj wszystkie artykuły
+    langsPL.forEach(el => el.style.display = 'none');
+    langsNL.forEach(el => el.style.display = 'none');
+
+    // pokaż ten, który należy do wybranego tab i języka
+    const tab = document.getElementById(tabId);
+    if (!tab) return;
+    const article = tab.querySelector(`.lang.${lang}`);
+    if(article) article.style.display = '';
+  }
+
   // Zakładki
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
       tabContents.forEach(tc => tc.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
+      const tabId = btn.dataset.tab;
+      document.getElementById(tabId).classList.add('active');
+
+      // pokaż artykuł w aktualnym języku w nowej zakładce
+      showLangArticles(tabId, currentLang);
     });
   });
 
   // Przełączanie języka
   function setLang(lang) {
+    currentLang = lang;
     if(lang === 'pl') {
       plLangBtn.classList.add('active');
       nlLangBtn.classList.remove('active');
-      langsPL.forEach(el => el.style.display = '');
-      langsNL.forEach(el => el.style.display = 'none');
-      tabButtons.forEach(btn => btn.textContent = btn.dataset.pl);
     } else {
       nlLangBtn.classList.add('active');
       plLangBtn.classList.remove('active');
-      langsPL.forEach(el => el.style.display = 'none');
-      langsNL.forEach(el => el.style.display = '');
-      tabButtons.forEach(btn => btn.textContent = btn.dataset.nl);
+    }
+    tabButtons.forEach(btn => btn.textContent = lang === 'pl' ? btn.dataset.pl : btn.dataset.nl);
+
+    // Pokaż artykuł aktualnej zakładki w wybranym języku
+    const activeTabBtn = document.querySelector('.tab-btn.active');
+    if(activeTabBtn) {
+      showLangArticles(activeTabBtn.dataset.tab, lang);
     }
   }
 
   plLangBtn.addEventListener('click', () => setLang('pl'));
   nlLangBtn.addEventListener('click', () => setLang('nl'));
 
-  setLang('pl'); // Domyślny język
+  // Inicjalizacja — pokaż domyślnie język polski i pierwszą zakładkę
+  setLang('pl');
 });
 </script>
 
 </body>
 </html>
+
 
 
 
