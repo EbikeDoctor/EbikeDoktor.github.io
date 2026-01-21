@@ -10,61 +10,60 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background-color: #e6f7f8; /* jasne tło dopasowane do loga */
-  color: #093f4f; /* ciemny morski do tekstu */
 }
 
 /* Sidebar - zakładki po lewej */
 .sidebar {
-  width: 240px;
-  background: #0a5f70; /* kolor sidebaru dopasowany do loga */
+  width: 220px;
+  background: #0d3b66; /* kolor dopasowany do logo */
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 25px 20px;
-  align-items: center;
+  padding: 15px;
 }
 
 .sidebar img {
-  max-width: 100%;
-  max-height: 150px; /* powiększone logo */
-  margin-bottom: 25px;
+  width: 100%;
+  max-height: 120px; /* powiększone logo */
   object-fit: contain;
+  margin-bottom: 15px;
 }
 
 .sidebar button, .sidebar .lang-btn {
-  background: rgba(255,255,255,0.15);
+  background: #145374; /* przyciski w odcieniu dopasowanym do logo */
   border: none;
   color: white;
-  padding: 10px;
-  margin: 6px 0;
+  padding: 8px;
+  margin: 3px 0;
   cursor: pointer;
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
   width: 100%;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.sidebar button:hover, .sidebar .lang-btn:hover {
-  background: rgba(255,255,255,0.3);
 }
 
 .sidebar button.active, .sidebar .lang-btn.active {
-  background: #097a8a; /* jaśniejszy odcień loga na aktywne przyciski */
-  font-weight: bold;
+  background: #ffd166; /* wyróżnienie aktywnej zakładki w kontrastowym kolorze */
+  color: #0d3b66;
 }
 
 /* Main content */
 .main {
   flex: 1;
-  padding: 30px 35px;
+  padding: 20px;
   overflow-y: auto;
-  background-color: #f0fcfd; /* bardzo jasne tło */
+  background: #f0f4f8; /* jasne tło dla czytelności */
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 h1,h2,h3 {
-  color: #0a5f70; /* nagłówki w kolorze logo */
+  color: #0d3b66;
 }
 
 table {
@@ -74,7 +73,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #97d0d9; /* delikatny turkus do tabeli */
+  border: 1px solid #ddd;
 }
 
 th, td {
@@ -100,12 +99,11 @@ th, td {
     flex-direction: row;
   }
   .sidebar {
-    width: 90px; /* bardzo wąski sidebar */
+    width: 90px;
     padding: 5px;
   }
   .sidebar img {
-    max-width: 100px;
-    max-height: 100px; /* powiększone na telefonie */
+    max-width: 80px;
     margin-bottom: 10px;
   }
   .sidebar button, .sidebar .lang-btn {
@@ -128,7 +126,7 @@ th, td {
 <body>
 
 <div class="sidebar">
-  <img src="logo.png.jpg" alt="EbikeDoctor Logo">
+  <img src="logo.png" alt="EbikeDoctor Logo">
 
   <button class="tab-btn active" data-tab="dane" data-pl="Dane" data-nl="Bedrijfsgegevens">Dane</button>
   <button class="tab-btn" data-tab="cenniki" data-pl="Cennik" data-nl="Prijzen">Cennik</button>
@@ -322,4 +320,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
