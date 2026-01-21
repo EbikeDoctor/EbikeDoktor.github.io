@@ -141,7 +141,7 @@ th, td {
 <body>
 
 <div class="sidebar">
-  <img src="logo.png.jpg" alt="EbikeDoctor Logo">
+  <img src="logo.png" alt="EbikeDoctor Logo">
 
   <button class="tab-btn active" data-tab="dane" data-pl="Dane" data-nl="Bedrijfsgegevens">Dane</button>
   <button class="tab-btn" data-tab="cenniki" data-pl="Cennik" data-nl="Prijzen">Cennik</button>
@@ -231,10 +231,9 @@ th, td {
         <tr><td>Regeneracja akumulatora</td><td>od € 199</td></tr>
       </table>
     </article>
-
     <article class="lang nl" style="display:none;">
       <h2>Fatbike Prijzen</h2>
-      <!-- ... jak wcześniej ... -->
+      <!-- Możesz uzupełnić po niderlandzku analogicznie -->
     </article>
   </section>
 
@@ -242,32 +241,43 @@ th, td {
   <section id="galeria" class="tab-content">
     <article class="lang pl">
       <h2>Galeria</h2>
-      <div class="gallery">
-        <img src="img/rower1.jpg" alt="Rower 1">
-        <img src="img/rower2.jpg" alt="Rower 2">
-        <img src="img/rower3.jpg" alt="Rower 3">
-        <img src="img/rower4.jpg" alt="Rower 4">
-        <img src="img/rower5.jpg" alt="Rower 5">
-        <img src="img/rower6.jpg" alt="Rower 6">
-        <img src="img/rower7.jpg" alt="Rower 7">
-      </div>
+      <div class="gallery" id="galleryPL"></div>
     </article>
     <article class="lang nl" style="display:none;">
       <h2>Galerij</h2>
-      <div class="gallery">
-        <img src="img/rower1.jpg" alt="Fiets 1">
-        <img src="img/rower2.jpg" alt="Fiets 2">
-        <img src="img/rower3.jpg" alt="Fiets 3">
-        <img src="img/rower4.jpg" alt="Fiets 4">
-        <img src="img/rower5.jpg" alt="Fiets 5">
-        <img src="img/rower6.jpg" alt="Fiets 6">
-        <img src="img/rower7.jpg" alt="Fiets 7">
-      </div>
+      <div class="gallery" id="galleryNL"></div>
     </article>
   </section>
 </div>
 
 <script>
+// Lista zdjęć w folderze img/
+const images = [
+  "rower1.jpg",
+  "rower2.jpg",
+  "rower3.jpg",
+  "rower4.jpg",
+  "rower5.jpg",
+  "rower6.jpg",
+  "rower7.jpg"
+];
+
+// Funkcja generująca galerię
+function generateGallery(galleryId, altPrefix) {
+  const container = document.getElementById(galleryId);
+  container.innerHTML = "";
+  images.forEach((imgName, index) => {
+    const img = document.createElement("img");
+    img.src = `img/${imgName}`;
+    img.alt = `${altPrefix} ${index + 1}`;
+    container.appendChild(img);
+  });
+}
+
+// Wygeneruj galerię dla PL i NL
+generateGallery("galleryPL", "Rower");
+generateGallery("galleryNL", "Fiets");
+
 document.addEventListener("DOMContentLoaded", function() {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
