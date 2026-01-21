@@ -1,1 +1,1 @@
-folder na zdjecia galerii
+
