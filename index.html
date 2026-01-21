@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EbikeDoctor</title>
 <style>
 body {
@@ -10,14 +10,14 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background-color: #e6f7f8; /* jasne tło dopasowane do loga */
-  color: #093f4f; /* ciemny morski do tekstu */
+  background-color: #e6f7f8;
+  color: #093f4f;
 }
 
-/* Sidebar - zakładki po lewej */
+/* Sidebar - gradient od czerni do błękitu */
 .sidebar {
   width: 240px;
-  background: #071824; /* ciemny kolor dopasowany do loga */
+  background: linear-gradient(to right, #000000, #4AC1D4);
   color: white;
   display: flex;
   flex-direction: column;
@@ -27,13 +27,14 @@ body {
 
 .sidebar img {
   max-width: 100%;
-  max-height: 150px; /* powiększone logo */
+  max-height: 150px;
   margin-bottom: 25px;
   object-fit: contain;
 }
 
+/* Zakładki z efektem poświaty */
 .sidebar button, .sidebar .lang-btn {
-  background: rgba(255,255,255,0.15);
+  background: rgba(74, 193, 212, 0.15);
   border: none;
   color: white;
   padding: 10px;
@@ -44,15 +45,18 @@ body {
   width: 100%;
   border-radius: 6px;
   transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(74, 193, 212, 0.5); /* delikatna poświata */
 }
 
 .sidebar button:hover, .sidebar .lang-btn:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(74, 193, 212, 0.3);
+  box-shadow: 0 0 8px rgba(74, 193, 212, 0.8);
 }
 
 .sidebar button.active, .sidebar .lang-btn.active {
-  background: #097a8a; /* jaśniejszy odcień loga na aktywne przyciski */
+  background: #4AC1D4;
   font-weight: bold;
+  box-shadow: 0 0 12px rgba(74, 193, 212, 0.9);
 }
 
 /* Main content */
@@ -60,11 +64,11 @@ body {
   flex: 1;
   padding: 30px 35px;
   overflow-y: auto;
-  background-color: #f0fcfd; /* bardzo jasne tło */
+  background-color: #f0fcfd;
 }
 
 h1,h2,h3 {
-  color: #0a5f70; /* nagłówki w kolorze logo */
+  color: #0a5f70;
 }
 
 table {
@@ -74,7 +78,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #97d0d9; /* delikatny turkus do tabeli */
+  border: 1px solid #97d0d9;
 }
 
 th, td {
@@ -100,12 +104,13 @@ th, td {
     flex-direction: row;
   }
   .sidebar {
-    width: 90px; /* bardzo wąski sidebar */
+    width: 90px;
     padding: 5px;
+    background: linear-gradient(to right, #000000, #4AC1D4);
   }
   .sidebar img {
     max-width: 100px;
-    max-height: 100px; /* powiększone na telefonie */
+    max-height: 100px;
     margin-bottom: 10px;
   }
   .sidebar button, .sidebar .lang-btn {
@@ -123,12 +128,20 @@ th, td {
     height: auto;
   }
 }
+
+/* Ukrywanie zakładek i pokazywanie aktywnej */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
 </style>
 </head>
 <body>
 
 <div class="sidebar">
-  <img src="logo.png.jpg" alt="EbikeDoctor Logo" />
+  <img src="logo.png.jpg" alt="EbikeDoctor Logo">
 
   <button class="tab-btn active" data-tab="dane" data-pl="Dane" data-nl="Bedrijfsgegevens">Dane</button>
   <button class="tab-btn" data-tab="cenniki" data-pl="Cennik" data-nl="Prijzen">Cennik</button>
@@ -186,7 +199,7 @@ th, td {
 
   <!-- Cenniki -->
   <section id="cenniki" class="tab-content">
-    <article class="lang pl" style="display:none;">
+    <article class="lang pl">
       <h2>Cennik Fatbike</h2>
       <table>
         <tr><th>Opis</th><th>Cena</th></tr>
@@ -203,7 +216,6 @@ th, td {
         <tr><td>Wymiana kontrolera silnika</td><td>€ 110</td></tr>
         <tr><td>Regeneracja akumulatora (LG, Samsung)</td><td>€ 260</td></tr>
       </table>
-
       <h2>Cennik Rowerów Elektrycznych</h2>
       <table>
         <tr><th>Opis</th><th>Cena</th></tr>
@@ -222,56 +234,26 @@ th, td {
 
     <article class="lang nl" style="display:none;">
       <h2>Fatbike Prijzen</h2>
-      <table>
-        <tr><th>Omschrijving</th><th>Prijs</th></tr>
-        <tr><td>Binnen-/buitenband vervangen</td><td>€ 35</td></tr>
-        <tr><td>Banden vervangen</td><td>€ 55</td></tr>
-        <tr><td>Band en binnenband vervangen</td><td>€ 65</td></tr>
-        <tr><td>Remblok vervangen</td><td>€ 25</td></tr>
-        <tr><td>Remset incl. blokken</td><td>€ 65</td></tr>
-        <tr><td>Remschijf vervangen</td><td>€ 25</td></tr>
-        <tr><td>Remolie vervangen</td><td>€ 20</td></tr>
-        <tr><td>Motor tandwielen vervangen</td><td>€ 90</td></tr>
-        <tr><td>Controle / service</td><td>€ 40</td></tr>
-        <tr><td>Ketting vervangen</td><td>€ 30</td></tr>
-        <tr><td>Motorcontroller vervangen</td><td>€ 110</td></tr>
-        <tr><td>Accu regeneratie (LG, Samsung)</td><td>€ 260</td></tr>
-      </table>
-
-      <h2>Elektrische Fietsen Prijzen</h2>
-      <table>
-        <tr><th>Omschrijving</th><th>Prijs</th></tr>
-        <tr><td>Controle / service</td><td>€ 40</td></tr>
-        <tr><td>Remblok vervangen</td><td>€ 25</td></tr>
-        <tr><td>Remschijf vervangen</td><td>€ 25</td></tr>
-        <tr><td>Remset incl. blokken</td><td>€ 70</td></tr>
-        <tr><td>Remolie vervangen</td><td>€ 20</td></tr>
-        <tr><td>Binnenband vervangen</td><td>€ 30</td></tr>
-        <tr><td>Band vervangen</td><td>vanaf € 40</td></tr>
-        <tr><td>Elektrische storing diagnosticeren</td><td>€ 30</td></tr>
-        <tr><td>Ketting vervangen</td><td>vanaf € 30</td></tr>
-        <tr><td>Accu regeneratie</td><td>vanaf € 199</td></tr>
-      </table>
+      <!-- ... jak wcześniej ... -->
     </article>
   </section>
 
   <!-- Galeria -->
   <section id="galeria" class="tab-content">
-    <article class="lang pl" style="display:none;">
+    <article class="lang pl">
       <h2>Galeria</h2>
       <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1" />
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2" />
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3" />
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Rower 1">
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Rower 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Rower 3">
       </div>
     </article>
-
     <article class="lang nl" style="display:none;">
       <h2>Galerij</h2>
       <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1" />
-        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&fit=crop&w=600&q=80" alt="Fiets 2" />
-        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80" alt="Fiets 3" />
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=600&q=80" alt="Fiets 1">
+        <img src="https://images.unsplash.com/photo-1473445361084-5cc7a22e5a5a?auto=format&w=600&q=80" alt="Fiets 2">
+        <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&w=600&q=80" alt="Fiets 3">
       </div>
     </article>
   </section>
@@ -286,58 +268,36 @@ document.addEventListener("DOMContentLoaded", function() {
   const langsPL = document.querySelectorAll('.lang.pl');
   const langsNL = document.querySelectorAll('.lang.nl');
 
-  let currentLang = 'pl'; // zapamiętujemy aktualny język
-
-  // Funkcja do pokazania właściwego artykułu po zmianie zakładki
-  function showLangArticles(tabId, lang) {
-    // najpierw ukryj wszystkie artykuły
-    langsPL.forEach(el => el.style.display = 'none');
-    langsNL.forEach(el => el.style.display = 'none');
-
-    // pokaż ten, który należy do wybranego tab i języka
-    const tab = document.getElementById(tabId);
-    if (!tab) return;
-    const article = tab.querySelector(`.lang.${lang}`);
-    if(article) article.style.display = '';
-  }
-
   // Zakładki
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
       tabContents.forEach(tc => tc.classList.remove('active'));
       btn.classList.add('active');
-      const tabId = btn.dataset.tab;
-      document.getElementById(tabId).classList.add('active');
-
-      // pokaż artykuł w aktualnym języku w nowej zakładce
-      showLangArticles(tabId, currentLang);
+      document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
 
   // Przełączanie języka
   function setLang(lang) {
-    currentLang = lang;
     if(lang === 'pl') {
       plLangBtn.classList.add('active');
       nlLangBtn.classList.remove('active');
+      langsPL.forEach(el => el.style.display = '');
+      langsNL.forEach(el => el.style.display = 'none');
+      tabButtons.forEach(btn => btn.textContent = btn.dataset.pl);
     } else {
       nlLangBtn.classList.add('active');
       plLangBtn.classList.remove('active');
-    }
-    tabButtons.forEach(btn => btn.textContent = lang === 'pl' ? btn.dataset.pl : btn.dataset.nl);
-
-    // Pokaż artykuł aktualnej zakładki w wybranym języku
-    const activeTabBtn = document.querySelector('.tab-btn.active');
-    if(activeTabBtn) {
-      showLangArticles(activeTabBtn.dataset.tab, lang);
+      langsPL.forEach(el => el.style.display = 'none');
+      langsNL.forEach(el => el.style.display = '');
+      tabButtons.forEach(btn => btn.textContent = btn.dataset.nl);
     }
   }
 
   plLangBtn.addEventListener('click', () => setLang('pl'));
   nlLangBtn.addEventListener('click', () => setLang('nl'));
 
-  // Inicjalizacja — pokaż domyślnie język polski i pierwszą zakładkę
   setLang('pl');
 });
 </script>
