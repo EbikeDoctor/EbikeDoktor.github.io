@@ -10,14 +10,13 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background-color: #e6f7f8; /* jasne tło dopasowane do loga */
-  color: #093f4f; /* ciemny morski do tekstu */
+  background-color: #e6f7f8;
+  color: #093f4f;
 }
 
-/* Sidebar - zakładki po lewej */
 .sidebar {
   width: 240px;
-  background: #0a5f70; /* kolor sidebaru dopasowany do loga */
+  background: #0a5f70;
   color: white;
   display: flex;
   flex-direction: column;
@@ -27,7 +26,7 @@ body {
 
 .sidebar img {
   max-width: 100%;
-  max-height: 150px; /* powiększone logo */
+  max-height: 150px;
   margin-bottom: 25px;
   object-fit: contain;
 }
@@ -51,7 +50,7 @@ body {
 }
 
 .sidebar button.active, .sidebar .lang-btn.active {
-  background: #097a8a; /* jaśniejszy odcień loga na aktywne przyciski */
+  background: #097a8a;
   font-weight: bold;
 }
 
@@ -60,11 +59,11 @@ body {
   flex: 1;
   padding: 30px 35px;
   overflow-y: auto;
-  background-color: #f0fcfd; /* bardzo jasne tło */
+  background-color: #f0fcfd;
 }
 
 h1,h2,h3 {
-  color: #0a5f70; /* nagłówki w kolorze logo */
+  color: #0a5f70;
 }
 
 table {
@@ -74,7 +73,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #97d0d9; /* delikatny turkus do tabeli */
+  border: 1px solid #97d0d9;
 }
 
 th, td {
@@ -92,6 +91,15 @@ th, td {
   height: 150px;
   object-fit: cover;
   margin: 5px;
+}
+
+/* Ukrywanie nieaktywnych zakładek */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 /* Poprawa wyglądu na telefonach */
@@ -289,11 +297,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Zakładki
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Odznacz wszystkie przyciski
       tabButtons.forEach(b => b.classList.remove('active'));
-      // Ukryj wszystkie sekcje
       tabContents.forEach(tc => tc.classList.remove('active'));
-      // Aktywuj kliknięty przycisk i odpowiadającą sekcję
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
