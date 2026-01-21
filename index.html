@@ -10,15 +10,14 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background-color: #e6f7f8; /* jasne tło dopasowane do loga */
-  color: #093f4f; /* ciemny morski do tekstu */
+  background-color: #e6f7f8;
+  color: #093f4f;
 }
 
 /* Sidebar - zakładki po lewej */
 .sidebar {
   width: 240px;
-  background: url('logo.png.jpg') no-repeat center center; /* tło loga */
-  background-size: cover;
+  background: #000000; /* czarne tło */
   color: white;
   display: flex;
   flex-direction: column;
@@ -28,7 +27,7 @@ body {
 
 .sidebar img {
   max-width: 100%;
-  max-height: 150px; /* powiększone logo */
+  max-height: 150px;
   margin-bottom: 25px;
   object-fit: contain;
 }
@@ -52,7 +51,7 @@ body {
 }
 
 .sidebar button.active, .sidebar .lang-btn.active {
-  background: rgba(0,0,0,0.3); /* lekko ciemniejsze na aktywny przycisk */
+  background: rgba(255,255,255,0.25);
   font-weight: bold;
 }
 
@@ -61,11 +60,11 @@ body {
   flex: 1;
   padding: 30px 35px;
   overflow-y: auto;
-  background-color: #f0fcfd; /* bardzo jasne tło */
+  background-color: #f0fcfd;
 }
 
 h1,h2,h3 {
-  color: #0a5f70; /* nagłówki w kolorze logo */
+  color: #0a5f70;
 }
 
 table {
@@ -75,7 +74,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #97d0d9; /* delikatny turkus do tabeli */
+  border: 1px solid #97d0d9;
 }
 
 th, td {
@@ -332,6 +331,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
