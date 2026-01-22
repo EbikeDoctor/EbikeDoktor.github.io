@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EbikeDoctor</title>
+
+<title>Serwis Rowerów Elektrycznych Tilburg | EbikeDoctor</title>
+<meta name="description" content="Profesjonalny serwis rowerów elektrycznych w Tilburg. Naprawa e-bike, regeneracja baterii, diagnostyka silników. EbikeDoctor – szybko i fachowo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ebikedoctor.github.io/EbikeDoktor.github.io/">
+
 <style>
 body {
   margin: 0;
@@ -158,7 +163,7 @@ th, td {
   <!-- Dane firmy -->
   <section id="dane" class="tab-content active">
     <article class="lang pl">
-      <h1>EbikeDoctor</h1>
+      <h1>Serwis Rowerów Elektrycznych – EbikeDoctor</h1>
       <p>Oferuję kompleksową naprawę rowerów tradycyjnych, elektrycznych oraz fatbike’ów. Dzięki doświadczeniu i pasji do dwóch kółek gwarantuję dokładną diagnostykę, solidną naprawę oraz indywidualne podejście do każdego klienta.</p>
       <h2>Nasze usługi:</h2>
       <ul>
@@ -177,8 +182,8 @@ th, td {
       <p>Didamstraat 5, 5043JN Tilburg - Reeshof</p>
     </article>
 
-    <article class="lang nl" style="display:none;">
-      <h1>EbikeDoctor</h1>
+    <article class="lang nl" lang="nl" style="display:none;">
+      <h1>Elektrische Fietsen Service – EbikeDoctor</h1>
       <p>Wij bieden complete reparatie van traditionele fietsen, elektrische fietsen en fatbikes. Dankzij onze ervaring en passie voor fietsen garanderen wij nauwkeurige diagnose, degelijke reparatie en individuele aanpak voor elke klant.</p>
       <h2>Onze diensten:</h2>
       <ul>
@@ -232,7 +237,7 @@ th, td {
         <tr><td>Regeneracja akumulatora</td><td>od € 199</td></tr>
       </table>
     </article>
-    <article class="lang nl" style="display:none;">
+    <article class="lang nl" lang="nl" style="display:none;">
       <h2>Fatbike Prijzen</h2>
       <table>
         <tr><th>Omschrijving</th><th>Prijs</th></tr>
@@ -272,7 +277,7 @@ th, td {
       <h2>Galeria</h2>
       <div class="gallery" id="galleryPL"></div>
     </article>
-    <article class="lang nl" style="display:none;">
+    <article class="lang nl" lang="nl" style="display:none;">
       <h2>Galerij</h2>
       <div class="gallery" id="galleryNL"></div>
     </article>
@@ -285,7 +290,7 @@ th, td {
       <p><strong>Adres:</strong> Didamstraat 5, 5043 JN Tilburg, Nederland</p>
       <p><strong>Telefon:</strong> +31 6 19801410</p>
     </article>
-    <article class="lang nl" style="display:none;">
+    <article class="lang nl" lang="nl" style="display:none;">
       <h2>Contact</h2>
       <p><strong>Adres:</strong> Didamstraat 5, 5043 JN Tilburg, Nederland</p>
       <p><strong>Telefoon:</strong> +31 6 19801410</p>
@@ -294,7 +299,6 @@ th, td {
 </div>
 
 <script>
-// Lista zdjęć w folderze img/
 const images = [
   "rower1.jpg",
   "rower2.jpg",
@@ -305,14 +309,13 @@ const images = [
   "rower7.jpg"
 ];
 
-// Funkcja generująca galerię
 function generateGallery(galleryId, altPrefix) {
   const container = document.getElementById(galleryId);
   container.innerHTML = "";
   images.forEach((imgName, index) => {
     const img = document.createElement("img");
     img.src = `img/${imgName}`;
-    img.alt = `${altPrefix} ${index + 1}`;
+    img.alt = `${altPrefix} elektryczny – serwis EbikeDoctor Tilburg ${index + 1}`;
     container.appendChild(img);
   });
 }
@@ -362,6 +365,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
